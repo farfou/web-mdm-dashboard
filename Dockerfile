@@ -12,7 +12,8 @@ RUN \
   gem install --no-rdoc --no-ri sass && \
   gem install --no-rdoc --no-ri compass && \
   npm install bower -g && \
-  npm install grunt -g && \  
+  npm install yarn -g && \
+  npm install grunt -g && \ 
   rm -rf /var/lib/apt/lists/* && \
   echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
   chown -R www-data:www-data /var/lib/nginx && \
