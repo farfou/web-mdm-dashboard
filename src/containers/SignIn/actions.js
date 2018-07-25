@@ -26,7 +26,7 @@
  * ------------------------------------------------------------------------------
  */
 
-import appConfig from '../../../public/config.json'
+import appConfig from '../../../public/config/config.json'
 
 /**
  * Handle change input value

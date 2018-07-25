@@ -36,7 +36,7 @@ import {
 } from 'react-router-dom'
 import I18n from '../../../shared/i18n'
 import publicURL from '../../../shared/publicURL'
-import appConfig from '../../../../public/config.json'
+import appConfig from '../../../../public/config/config.json'
 import withGLPI from '../../../hoc/withGLPI'
 import Loading from '../../../components/Loading'
 

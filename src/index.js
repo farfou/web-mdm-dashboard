@@ -43,7 +43,7 @@ import { I18nProvider } from './providers/I18nProvider'
 import { NotificationsProvider } from './providers/NotificationsProvider'
 import { AuthenticationProvider } from './providers/AuthenticationProvider'
 import './assets/styles/main.scss' // Global CSS Styles
-import appConfig from '../public/config.json'
+import appConfig from '../public/config/config.json'
 
 /**
  * Create the bugsnag client

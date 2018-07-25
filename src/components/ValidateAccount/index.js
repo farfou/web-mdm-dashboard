@@ -40,7 +40,7 @@ import publicURL from '../../shared/publicURL'
 import itemtype from '../../shared/itemtype'
 import I18n from '../../shared/i18n'
 import Loading from '../Loading'
-import appConfig from '../../../public/config.json'
+import appConfig from '../../../public/config/config.json'
 
 /**
  * Component with page of 'validate account'

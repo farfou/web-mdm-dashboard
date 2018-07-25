@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import publicURL from '../../shared/publicURL'
 import glpi from '../../shared/glpiApi'
 import itemtype from '../../shared/itemtype'
-import appConfig from '../../../public/config.json'
+import appConfig from '../../../public/config/config.json'
 
 const AuthenticationContext = React.createContext()
 

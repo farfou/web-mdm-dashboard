@@ -30,7 +30,7 @@
 
 /** import dependencies */
 import Glpi from '@glpi-project/javascript-library-glpi'
-import appConfig from '../../../public/config.json'
+import appConfig from '../../../public/config/config.json'
 
 /** Initialize Glpi object using global config */
 const glpi = new Glpi({
