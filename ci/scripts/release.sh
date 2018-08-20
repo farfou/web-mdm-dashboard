@@ -5,7 +5,19 @@ GITHUB_COMMIT_MESSAGE=$(git log --format=oneline -n 1 ${CIRCLE_SHA1})
 if [[ $GITHUB_COMMIT_MESSAGE != *"ci(release): generate CHANGELOG.md for version"* ]]; then
 
     # Generate CHANGELOG.md and increment version
-    yarn release -m "ci(release): generate CHANGELOG.md for version %s"
+    IS_PRERELEASE="$( cut -d '-' -f 2 <<< "$CIRCLE_BRANCH" )";
+
+    if [[ $CIRCLE_BRANCH != "$IS_PRERELEASE" ]]; then
+
+      PREFIX_PRERELEASE="$( cut -d '.' -f 1 <<< "$IS_PRERELEASE" )";
+      yarn release -m "ci(release): generate CHANGELOG.md for version %s" --prerelease "$PREFIX_PRERELEASE"
+
+    else
+
+      yarn release -m "ci(release): generate CHANGELOG.md for version %s"
+
+    fi
+
     # Get version number from package.json
     export GIT_TAG=$(jq -r ".version" package.json)
     # Copy CHANGELOG.md to gh-pages branch
@@ -15,13 +27,28 @@ if [[ $GITHUB_COMMIT_MESSAGE != *"ci(release): generate CHANGELOG.md for version
     # Create release with conventional-github-releaser
     yarn conventional-github-releaser -p angular -t $GITHUB_TOKEN
 
-    # Upload build file to release
-    yarn github-release upload \
-    --user "${CIRCLE_PROJECT_USERNAME}" \
-    --repo "${CIRCLE_PROJECT_REPONAME}" \
-    --tag "v${GIT_TAG}" \
-    --name "build.zip" \
-    --file "./build.zip"
+    if [[ $CIRCLE_BRANCH != "$IS_PRERELEASE" ]]; then
+
+      # Upload build file to release
+      yarn github-release upload \
+      --user "${CIRCLE_PROJECT_USERNAME}" \
+      --repo "${CIRCLE_PROJECT_REPONAME}" \
+      --tag "v${GIT_TAG}" \
+      --name "build.zip" \
+      --file "./build.zip"
+
+    else
+
+      # Upload build file to prerelease
+      yarn github-release upload \
+      --user "${CIRCLE_PROJECT_USERNAME}" \
+      --repo "${CIRCLE_PROJECT_REPONAME}" \
+      --tag "v${GIT_TAG}" \
+      --name "build.zip" \
+      --file "./build.zip" \
+      --pre-release
+
+    fi
 
     # Update develop branch
     git fetch origin develop
@@ -36,4 +63,7 @@ if [[ $GITHUB_COMMIT_MESSAGE != *"ci(release): generate CHANGELOG.md for version
     git clean -d -x -f
     git merge $CIRCLE_BRANCH
     git push origin master
+
+    # Remove release branch
+    git push origin :$CIRCLE_BRANCH
 fi

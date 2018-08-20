@@ -31,12 +31,12 @@ import React, {
   PureComponent,
 } from 'react'
 import PropTypes from 'prop-types'
-import I18n from '../../../shared/i18n'
+import I18n from 'shared/i18n'
+import itemtype from 'shared/itemtype'
+import EmptyMessage from 'components/EmptyMessage'
+import ContentPane from 'components/ContentPane'
+import Loading from 'components/Loading'
 import ApplicationsEditItemList from './ApplicationsEditItemList'
-import EmptyMessage from '../../../components/EmptyMessage'
-import ContentPane from '../../../components/ContentPane'
-import Loading from '../../../components/Loading'
-import itemtype from '../../../shared/itemtype'
 
 /**
  * @class ApplicationsEdit
@@ -62,7 +62,7 @@ export default class ApplicationsEdit extends PureComponent {
     const newItem = [...this.state.itemListEdit]
 
     // Find index of specific object using findIndex method.
-    const objIndex = newItem.findIndex((obj => obj.id === index));
+    const objIndex = newItem.findIndex((obj => obj.id === index))
 
     // Update object's name property.
     if (objIndex !== -1) {

@@ -31,11 +31,11 @@ import React, {
   PureComponent,
 } from 'react'
 import PropTypes from 'prop-types'
-import I18n from '../../../shared/i18n'
+import I18n from 'shared/i18n'
+import itemtype from 'shared/itemtype'
+import ContentPane from 'components/ContentPane'
+import Loading from 'components/Loading'
 import FilesEditItemList from './FilesEditItemList'
-import ContentPane from '../../../components/ContentPane'
-import Loading from '../../../components/Loading'
-import itemtype from '../../../shared/itemtype'
 
 /**
  * @class FilesEdit
@@ -61,7 +61,7 @@ export default class FilesEdit extends PureComponent {
     const newItem = [...selectedItem]
 
     // Find index of specific object using findIndex method.
-    const objIndex = newItem.findIndex((obj => obj.id === index));
+    const objIndex = newItem.findIndex((obj => obj.id === index))
 
     // Update object's name property.
     if (objIndex !== -1) {

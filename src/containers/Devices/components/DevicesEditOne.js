@@ -31,16 +31,16 @@ import React, {
   PureComponent,
 } from 'react'
 import PropTypes from 'prop-types'
-import I18n from '../../../shared/i18n'
-import ContentPane from '../../../components/ContentPane'
-import ConstructInputs from '../../../components/Forms'
+import I18n from 'shared/i18n'
+import itemtype from 'shared/itemtype'
+import publicURL from 'shared/publicURL'
+import getID from 'shared/getID'
+import ContentPane from 'components/ContentPane'
+import ConstructInputs from 'components/Forms'
 import {
   agentScheme,
-} from '../../../components/Forms/Schemas'
-import Loading from '../../../components/Loading'
-import itemtype from '../../../shared/itemtype'
-import publicURL from '../../../shared/publicURL'
-import getID from '../../../shared/getID'
+} from 'components/Forms/Schemas'
+import Loading from 'components/Loading'
 
 /**
  * @class DevicesEditOne
@@ -61,7 +61,7 @@ export default class DevicesEditOne extends PureComponent {
     if (Number(this.state.id)) {
       this.handleRefresh()
     } else {
-      this.props.history.push(`${publicURL}/app/devices`);
+      this.props.history.push(`${publicURL}/app/devices`)
     }
   }
 
@@ -165,8 +165,8 @@ export default class DevicesEditOne extends PureComponent {
           type: 'success',
         })
         this.props.changeAction('reload')
-        this.props.changeSelectionMode(false);
-        this.props.history.push(`${publicURL}/app/devices/${this.state.id}`);
+        this.props.changeSelectionMode(false)
+        this.props.history.push(`${publicURL}/app/devices/${this.state.id}`)
       })
       .catch((error) => {
         this.props.toast.setNotification(this.props.handleMessage({

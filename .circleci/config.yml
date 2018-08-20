@@ -6,7 +6,7 @@ references:
     ~/flyve
 
   docker_image: &docker_image
-    kkarczmarczyk/node-yarn
+    node:8.11
 
   container_config: &container_config
     docker:
@@ -51,7 +51,7 @@ references:
   start_server: &start_server
     run:
       name: Start server in background
-      command: node scripts/start.js > ../yarn.log
+      command: yarn start:only > ../yarn.log
       background: true
 
   unit_test: &unit_test
@@ -63,16 +63,15 @@ references:
     run:
       name: Run End-to-End tests
       command: |
-        yarn cypress install
         until grep -m 1 'Compiled successfully!' ../yarn.log ; do true; done
         yarn test:cypress
 
-  sonarwhal_test: &sonarwhal_test
+  webhint_test: &webhint_test
     run:
-      name: Run sonarwhal tests
+      name: Run webhint tests
       command: |
         until grep -m 1 'Compiled successfully!' ../yarn.log ; do true; done
-        yarn test:sonarwhal
+        yarn test:webhint
 
   validate_html: &validate_html
     run:
@@ -142,6 +141,7 @@ references:
       key: *build_key
       paths:
         - build
+        - public/config.js
         # - reports
 
   store_screenshots: &store_screenshots
@@ -199,10 +199,11 @@ jobs:
       - *system_install
       - *python_install
       - *restore_node_cache
+      - *restore_build_cache
       - *start_server
       - *unit_test
       - *end_to_end_test
-      - *sonarwhal_test
+      - *webhint_test
       - *restore_build_cache
       - *validate_html
       - *store_screenshots
@@ -236,7 +237,7 @@ jobs:
       - *system_install
       - *restore_node_cache
       - *git_config
-      - *restore_build_cache
+      # - *restore_build_cache
       - *create_coverage
 
   release:
@@ -250,14 +251,6 @@ jobs:
       - *restore_build_cache
       - *zip_build
       - *create_release
-
-  master:
-    <<: *container_config
-    steps:
-      - checkout
-      - *system_install
-      - *git_config
-      - *release_master
 
 workflows:
   version: 2
@@ -305,8 +298,3 @@ workflows:
             branches:
               only:
                 - /^release/.*/
-      - master:
-          filters:
-            branches:
-              only:
-                - master

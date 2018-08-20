@@ -34,11 +34,10 @@ import PropTypes from 'prop-types'
 import {
   Link,
 } from 'react-router-dom'
-import I18n from '../../../shared/i18n'
-import publicURL from '../../../shared/publicURL'
-import appConfig from '../../../../public/config/config.json'
-import withGLPI from '../../../hoc/withGLPI'
-import Loading from '../../../components/Loading'
+import I18n from 'shared/i18n'
+import publicURL from 'shared/publicURL'
+import withGLPI from 'hoc/withGLPI'
+import Loading from 'components/Loading'
 
 /**
  * Component with the step 1 (the user name) of the login
@@ -65,7 +64,7 @@ class UsernameFieldset extends PureComponent {
   componentDidMount = async () => {
     try {
       await this.props.glpi.initSessionByUserToken({
-        userToken: appConfig.pluginToken,
+        userToken: window.appConfig.pluginToken,
       })
       const plugins = await this.props.glpi.getAllItems({
         itemtype: 'Plugin',
@@ -107,29 +106,27 @@ class UsernameFieldset extends PureComponent {
     if (this.props.username) {
       this.props.changePhase(2)
     } else {
-      this.setState((prevState) => {
-        ({
-          classInput: 'win-textbox color-line-alert',
-          errorMessage: (
-            <p className="color-type-alert">
-              <span>
-                {' '}
-                {I18n.t('login.username_not_registered')}
-                {' '}
-              </span>
-              {
-                prevState.selfRegistration
-                  ? (
-                    <Link to={`${publicURL}/signUp`}>
-                      {I18n.t('login.create_a_new')}
-                    </Link>
-                  )
-                  : null
-              }
-            </p>
-          ),
-        })
-      })
+      this.setState(prevState => ({
+        classInput: 'win-textbox color-line-alert',
+        errorMessage: (
+          <p className="color-type-alert">
+            <span>
+              {' '}
+              {I18n.t('login.username_not_registered')}
+              {' '}
+            </span>
+            {
+              prevState.selfRegistration
+                ? (
+                  <Link to={`${publicURL}/signUp`}>
+                    {I18n.t('login.create_a_new')}
+                  </Link>
+                )
+                : null
+            }
+          </p>
+        ),
+      }))
     }
   }
 
@@ -164,7 +161,7 @@ class UsernameFieldset extends PureComponent {
               <input
                 type="text"
                 name="username"
-                ref={(input) => { this.usernameInput = input; }}
+                ref={(input) => { this.usernameInput = input }}
                 className={this.state.classInput}
                 placeholder={I18n.t('commons.username')}
                 value={this.props.username}

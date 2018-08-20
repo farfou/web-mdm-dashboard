@@ -33,8 +33,8 @@ import PropTypes from 'prop-types'
 import {
   Link,
 } from 'react-router-dom'
-import I18n from '../../shared/i18n'
-import publicURL from '../../shared/publicURL'
+import I18n from 'shared/i18n'
+import publicURL from 'shared/publicURL'
 
 /**
  * Component with the breadcrumb menu of the header
@@ -82,7 +82,7 @@ class HeaderBreadcrumb extends PureComponent {
 
         <div className="header-icon">
           <span
-            className="burgerIcon"
+            className="iconFont burgerIcon"
             onClick={this.props.handleToggleExpand}
             role="button"
             tabIndex="0"

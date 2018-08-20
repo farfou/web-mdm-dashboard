@@ -31,7 +31,7 @@ import React, {
   PureComponent,
 } from 'react'
 import PropTypes from 'prop-types'
-import IconItemList from '../../../components/IconItemList'
+import IconItemList from 'components/IconItemList'
 
 /**
  * @class ApplicationsItemList
@@ -66,7 +66,7 @@ export default class ApplicationsItemList extends PureComponent {
             verticalAlign: 'super',
           }}
         >
-          <span className="documentIcon" />
+          <span className="iconFont documentIcon" />
         </div>
       )
     }

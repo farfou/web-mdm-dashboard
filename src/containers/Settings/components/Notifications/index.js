@@ -31,8 +31,8 @@ import React, {
   PureComponent,
 } from 'react'
 import ReactWinJS from 'react-winjs'
-import I18n from '../../../../shared/i18n'
-import ContentPane from '../../../../components/ContentPane'
+import I18n from 'shared/i18n'
+import ContentPane from 'components/ContentPane'
 
 /**
  * Component with the notifications section
@@ -83,11 +83,9 @@ class Notifications extends PureComponent {
    */
   changeShowNotifications = () => {
     localStorage.setItem('showNotifications', !this.state.showNotifications)
-    this.setState((prevState) => {
-      ({
-        showNotifications: !prevState.showNotifications,
-      })
-    })
+    this.setState(prevState => ({
+      showNotifications: !prevState.showNotifications,
+    }))
   }
 
   /**

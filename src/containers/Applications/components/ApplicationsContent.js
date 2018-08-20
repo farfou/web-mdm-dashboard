@@ -31,15 +31,15 @@ import React, {
   PureComponent,
 } from 'react'
 import PropTypes from 'prop-types'
-import I18n from '../../../shared/i18n'
-import ContentPane from '../../../components/ContentPane'
-import IconItemList from '../../../components/IconItemList'
-import BytesToSize from '../../../shared/bytesToSize'
-import Confirmation from '../../../components/Confirmation'
-import Loading from '../../../components/Loading'
-import itemtype from '../../../shared/itemtype'
-import getID from '../../../shared/getID'
-import publicURL from '../../../shared/publicURL'
+import I18n from 'shared/i18n'
+import BytesToSize from 'shared/bytesToSize'
+import itemtype from 'shared/itemtype'
+import getID from 'shared/getID'
+import publicURL from 'shared/publicURL'
+import ContentPane from 'components/ContentPane'
+import IconItemList from 'components/IconItemList'
+import Confirmation from 'components/Confirmation'
+import Loading from 'components/Loading'
 
 /**
  * @class ApplicationsContent
@@ -185,7 +185,7 @@ export default class ApplicationsContent extends PureComponent {
             textAlign: 'center',
           }}
         >
-          <span className="documentIcon" />
+          <span className="iconFont documentIcon" />
         </div>
       )
     }
@@ -213,14 +213,14 @@ export default class ApplicationsContent extends PureComponent {
               <br />
               <div>
                 <span
-                  className="editIcon"
+                  className="iconFont editIcon"
                   style={{ marginRight: '20px', fontSize: '20px' }}
                   onClick={() => this.props.history.push(`${publicURL}/app/applications/${this.state.id}/edit`)}
                   role="button"
                   tabIndex="0"
                 />
                 <span
-                  className="deleteIcon"
+                  className="iconFont deleteIcon"
                   style={{ marginRight: '20px', fontSize: '20px' }}
                   onClick={this.handleDelete}
                   role="button"

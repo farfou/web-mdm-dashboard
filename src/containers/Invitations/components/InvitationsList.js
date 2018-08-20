@@ -33,15 +33,15 @@ import React, {
 import PropTypes from 'prop-types'
 import ReactWinJS from 'react-winjs'
 import WinJS from 'winjs'
-import I18n from '../../../shared/i18n'
+import I18n from 'shared/i18n'
+import BuildItemList from 'shared/BuildItemList'
+import itemtype from 'shared/itemtype'
+import publicURL from 'shared/publicURL'
+import handleMessage from 'shared/handleMessage'
+import Loader from 'components/Loader'
+import Confirmation from 'components/Confirmation'
+import EmptyMessage from 'components/EmptyMessage'
 import InvitationsItemList from './InvitationsItemList'
-import BuildItemList from '../../../shared/BuildItemList'
-import Loader from '../../../components/Loader'
-import Confirmation from '../../../components/Confirmation'
-import EmptyMessage from '../../../components/EmptyMessage'
-import itemtype from '../../../shared/itemtype'
-import publicURL from '../../../shared/publicURL'
-import handleMessage from '../../../shared/handleMessage'
 
 /**
  * Component with the list of invitations
@@ -453,7 +453,7 @@ export default class InvitationsList extends PureComponent {
           tabIndex="0"
         >
           <span
-            className="refreshIcon"
+            className="iconFont refreshIcon"
             style={{ padding: '10px', fontSize: '20px' }}
           />
           <span>

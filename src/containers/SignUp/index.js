@@ -34,14 +34,13 @@ import PropTypes from 'prop-types'
 import {
   Link,
 } from 'react-router-dom'
-import I18n from '../../shared/i18n'
-import Loading from '../../components/Loading'
-import ConstructInputs from '../../components/Forms'
-import withAuthenticationLayout from '../../hoc/withAuthenticationLayout'
-import withHandleMessages from '../../hoc/withHandleMessages'
-import publicURL from '../../shared/publicURL'
-import ErrorValidation from '../../components/ErrorValidation'
-import appConfig from '../../../public/config/config.json'
+import I18n from 'shared/i18n'
+import publicURL from 'shared/publicURL'
+import Loading from 'components/Loading'
+import ConstructInputs from 'components/Forms'
+import ErrorValidation from 'components/ErrorValidation'
+import withAuthenticationLayout from 'hoc/withAuthenticationLayout'
+import withHandleMessages from 'hoc/withHandleMessages'
 
 /**
  * Component with the registration form
@@ -227,7 +226,7 @@ class SignUp extends PureComponent {
       })
         .then(() => {
           this.props.toast.setNotification({
-            title: appConfig.appName,
+            title: window.appConfig.appName,
             body: 'Successfully registered user',
             type: 'success',
           })
@@ -280,7 +279,7 @@ class SignUp extends PureComponent {
               role="button"
               tabIndex="0"
             >
-              <span className="refreshIcon" />
+              <span className="iconFont refreshIcon" />
               <span>
                 {I18n.t('login.refresh_captcha')}
               </span>

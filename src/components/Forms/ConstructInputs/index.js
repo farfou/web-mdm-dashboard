@@ -28,7 +28,6 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import createListElement from './createListElement'
 
 /**
@@ -43,7 +42,7 @@ const ConstructInputs = (props) => {
   if (props.icon) {
     icon = (
       <div className="froms__row froms__row--icon">
-        <span className={props.icon} />
+        <span className={`iconFont ${props.icon}`} />
         {
           props.title
             ? (

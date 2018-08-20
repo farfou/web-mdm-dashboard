@@ -31,13 +31,13 @@ import React, {
   PureComponent,
 } from 'react'
 import PropTypes from 'prop-types'
-import I18n from '../../../../shared/i18n'
-import Loading from '../../../../components/Loading'
-import Map from '../Map'
+import I18n from 'shared/i18n'
+import itemtype from 'shared/itemtype'
+import validateDate from 'shared/validateDate'
+import Loading from 'components/Loading'
 import GeolocationList from './GeolocationList'
-import itemtype from '../../../../shared/itemtype'
 import GeolocationRange from './GeolocationRange'
-import validateDate from '../../../../shared/validateDate'
+import Map from '../Map'
 
 /**
  * @class Geolocation
@@ -91,11 +91,9 @@ export default class Geolocation extends PureComponent {
    * @param {date}
    */
   applyRange = (min, max) => {
-    this.setState((prevState) => {
-      ({
-        showLocations: prevState.locations.filter(location => validateDate(new Date(location.date), min, max)),
-      })
-    })
+    this.setState(prevState => ({
+      showLocations: prevState.locations.filter(location => validateDate(new Date(location.date), min, max)),
+    }))
   }
 
   /**
@@ -214,11 +212,9 @@ export default class Geolocation extends PureComponent {
           <button
             className="btn btn--secondary"
             style={{ margin: 5 }}
-            onClick={() => this.setState((prevState) => {
-              ({
-                filter: !prevState.filter,
-              })
-            })}
+            onClick={() => this.setState(prevState => ({
+              filter: !prevState.filter,
+            }))}
             type="button"
           >
             {

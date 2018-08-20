@@ -33,14 +33,14 @@ import React, {
 import PropTypes from 'prop-types'
 import ReactWinJS from 'react-winjs'
 import WinJS from 'winjs'
-import I18n from '../../../shared/i18n'
+import I18n from 'shared/i18n'
+import itemtype from 'shared/itemtype'
+import publicURL from 'shared/publicURL'
+import handleMessage from 'shared/handleMessage'
+import Loader from 'components/Loader'
+import Confirmation from 'components/Confirmation'
+import EmptyMessage from 'components/EmptyMessage'
 import FilesItemList from './FilesItemList'
-import Loader from '../../../components/Loader'
-import Confirmation from '../../../components/Confirmation'
-import EmptyMessage from '../../../components/EmptyMessage'
-import itemtype from '../../../shared/itemtype'
-import publicURL from '../../../shared/publicURL'
-import handleMessage from '../../../shared/handleMessage'
 
 /**
  * @class FilesList
@@ -85,7 +85,7 @@ class FilesList extends PureComponent {
       this.listView.winControl.footer.style.height = this.state.totalcount > (this.state.pagination.page * this.state.pagination.count) ? this.state.isLoadingMore ? '100px' : '42px' : '1px'
     }
     if (this.toolBar) {
-      this.toolBar.winControl.forceLayout();
+      this.toolBar.winControl.forceLayout()
     }
 
     if (this.props.action === 'reload') {
@@ -383,7 +383,7 @@ class FilesList extends PureComponent {
           tabIndex="0"
         >
           <span
-            className="refreshIcon"
+            className="iconFont refreshIcon"
             style={{ padding: '10px', fontSize: '20px' }}
           />
           <span>

@@ -31,12 +31,12 @@ import React, {
   PureComponent,
 } from 'react'
 import PropTypes from 'prop-types'
-import I18n from '../../../shared/i18n'
-import ContentPane from '../../../components/ContentPane'
-import Confirmation from '../../../components/Confirmation'
-import Loading from '../../../components/Loading'
-import itemtype from '../../../shared/itemtype'
-import publicURL from '../../../shared/publicURL'
+import I18n from 'shared/i18n'
+import itemtype from 'shared/itemtype'
+import publicURL from 'shared/publicURL'
+import ContentPane from 'components/ContentPane'
+import Confirmation from 'components/Confirmation'
+import Loading from 'components/Loading'
 
 /**
  * @class FilesContent
@@ -132,7 +132,7 @@ export default class FilesContent extends PureComponent {
       <ContentPane>
         <div className="content-header" style={{ margin: '0 10px' }}>
           <div className="item-info">
-            <span className="fileIcon" style={{ fontSize: '48px', paddingLeft: '20px', paddingTop: '20px' }} />
+            <span className="iconFont fileIcon" style={{ fontSize: '48px', paddingLeft: '20px', paddingTop: '20px' }} />
             <div>
               <div className="item-info__name">
                 {fileName}
@@ -140,14 +140,14 @@ export default class FilesContent extends PureComponent {
               <br />
               <div>
                 <span
-                  className="editIcon"
+                  className="iconFont editIcon"
                   style={{ marginRight: '20px', fontSize: '20px' }}
                   onClick={this.handleEdit}
                   role="button"
                   tabIndex="0"
                 />
                 <span
-                  className="deleteIcon"
+                  className="iconFont deleteIcon"
                   style={{ marginRight: '20px', fontSize: '20px' }}
                   onClick={this.handleDelete}
                   role="button"
