@@ -9,7 +9,7 @@
 /cypress/screenshots
 
 # production
-/build
+#/build
 /reports
 
 # misc
