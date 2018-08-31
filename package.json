@@ -6,7 +6,7 @@
     "url": "git://github.com/flyve-mdm/web-mdm-dashboard.git"
   },
   "license": "GPL-3.0",
-  "homepage": "https://dev.flyve.org/dashboard",
+  "homepage": "",
   "scripts": {
     "prestart": "yarn sass && yarn test:watch -u &",
     "start": "NODE_PATH=./src react-scripts start",
